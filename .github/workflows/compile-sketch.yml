@@ -36,5 +36,5 @@ jobs:
               version: 1.0.0
             - name: RunningMedian
               version: 0.3.9
-            - name: ToneESP32
+            - source-url: https://github.com/weedmanu/ToneESP32.git
               version: 1.0.1
