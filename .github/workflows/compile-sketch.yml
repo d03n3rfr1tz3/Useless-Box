@@ -29,7 +29,7 @@ jobs:
             - ./
           libraries: |
             - source-url: https://github.com/marvinroger/async-mqtt-client.git
-              version: 0.9.0
+              version: v0.9.0
             - name: ESP32Servo
               version: 1.0.0
             - name: RunningMedian
