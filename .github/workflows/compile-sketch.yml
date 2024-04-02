@@ -22,13 +22,13 @@ jobs:
         uses: arduino/compile-sketches@v1
         with:
           platforms: |
-            - source-url: https://github.com/espressif/arduino-esp32
+            - source-url: https://github.com/espressif/arduino-esp32.git
               name: esp32:esp32
               version: 1.0.6
           sketch-paths: |
             - ./
           libraries: |
-            - source-url: https://github.com/marvinroger/async-mqtt-client
+            - source-url: https://github.com/marvinroger/async-mqtt-client.git
               version: 0.9.0
             - name: ESP32Servo
               version: 1.0.0
