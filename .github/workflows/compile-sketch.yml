@@ -23,7 +23,7 @@ jobs:
         with:
           platforms: |
             - source-url: https://github.com/espressif/arduino-esp32
-              name: esp32
+              name: esp32:esp32
               version: 1.0.6
           sketch-paths: |
             - ./
