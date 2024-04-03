@@ -38,4 +38,4 @@ jobs:
             - name: RunningMedian
               version: 0.3.9
             - source-url: https://github.com/lbernstone/Tone32.git
-              version: 1.0.1
+              version: v1.0.1
