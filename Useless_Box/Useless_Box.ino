@@ -165,6 +165,9 @@ bool checkWiFi(bool skipRetry) {
       WiFi.reconnect();
       delay(250);
       return WiFi.status() == WL_CONNECTED;
+    } else {
+      Serial.println(F("WiFi connection still lost. Giving up now..."));
+      return false;
     }
   }
 }
@@ -225,6 +228,9 @@ bool checkMQTT(bool skipRetry) {
       mqttClient.connect();
       delay(250);
       return mqttClient.connected();
+    } else {
+      Serial.println(F("MQTT connection still lost. Giving up now..."));
+      return false;
     }
   }
 }
@@ -322,8 +328,8 @@ void initOTA(void) {
   ArduinoOTA.begin();
 }
 
-bool checkOTA() {
-  if (!lastWifi) return false;
+void checkOTA() {
+  if (!lastWifi) return;
   ArduinoOTA.begin();
 }
 
@@ -565,7 +571,7 @@ void peekServo(void *parameter) {
   if (number == 0) isServoPeeked = true;
   
   int num = number;
-  if (num == 0) num = num = random(3);
+  if (num == 0) num = random(3);
   
   Serial.print(F("Peeked Servo with num: "));
   Serial.println(num);
@@ -928,12 +934,14 @@ void initBuzzer(void) {
   Serial.println(F("Starting initialization of Buzzer"));
   
   pinMode(PIN_BUZZER, OUTPUT);
+  tone(PIN_BUZZER, 5000);
   noTone(PIN_BUZZER);
   
   Serial.println(F("Finished initialization of Buzzer"));
 }
 
 void disposeBuzzer(void) {
+  tone(PIN_BUZZER, 5000);
   noTone(PIN_BUZZER);
 }
 
@@ -954,7 +962,7 @@ void triggerBuzzer(void *parameter) {
   if (number == 0) isBuzzerTriggered = true;
 
   int num = number;
-  if (num == 0) num = num = random(8);
+  if (num == 0) num = random(8);
 
   Serial.print(F("Triggered Buzzer with num: "));
   Serial.println(num);
@@ -979,7 +987,7 @@ void peekBuzzer(void *parameter) {
   if (number == 0) isBuzzerPeeked = true;
   
   int num = number;
-  if (num == 0) num = num = random(3);
+  if (num == 0) num = random(3);
 
   Serial.print(F("Peeked Buzzer with num: "));
   Serial.println(num);
