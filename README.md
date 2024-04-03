@@ -1,4 +1,4 @@
-![Compile Sketch]([https://github.com/github/docs/actions/workflows/main.yml/badge.svg](https://github.com/d03n3rfr1tz3/Useless-Box/actions/workflows/compile-sketch.yml/badge.svg))
+[![Compile Sketch](https://github.com/d03n3rfr1tz3/Useless-Box/actions/workflows/compile-sketch.yml/badge.svg)](https://github.com/d03n3rfr1tz3/Useless-Box/actions/workflows/compile-sketch.yml)
 
 # Useless Box
 Arduino Sketch for a Useless Box I build for our little one. Maybe it helps someone with their own Useless Box, especially with the part
