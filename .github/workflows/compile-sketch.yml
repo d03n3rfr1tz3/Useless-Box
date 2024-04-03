@@ -1,0 +1,41 @@
+name: Compile Sketch
+
+# The workflow will run on every push and pull request to the repository
+on:
+  workflow_dispatch:
+  # (optional) Run workflow when pushing on master/main
+  push:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+
+    steps:
+      # This step makes the contents of the repository available to the workflow
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # For more information: https://github.com/arduino/compile-sketches#readme
+      - name: Compile sketch
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: "esp32:esp32:esp32"
+          platforms: |
+            - source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+              name: esp32:esp32
+              version: 1.0.6
+          sketch-paths: |
+            - ./
+          libraries: |
+            - name: AsyncTCP
+              version: 1.1.4
+            - source-url: https://github.com/marvinroger/async-mqtt-client.git
+              version: v0.9.0
+            - name: ESP32Servo
+              version: 0.13.0
+            - name: RunningMedian
+              version: 0.3.9
+            - source-url: https://github.com/lbernstone/Tone32.git
+              version: v1.0.1
